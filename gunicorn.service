@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/djangoaws_project/djangoaws
+ExecStart=/home/ubuntu/djangoaws_project/venv/bin/gunicorn --error-logfile /var/log/gunicorn/error.log --access-logfile /var/log/gunicorn/access.log djangoaws.wsgi -b unix:/home/ubuntu/djangoaws_project/djangoaws/djangoaws.sock
+
+[Install]
+WantedBy=multi-user.target
