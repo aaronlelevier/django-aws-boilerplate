@@ -6,7 +6,5 @@ DATABASES = {
         'NAME': 'mydb',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
     }
 }

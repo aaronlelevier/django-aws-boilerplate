@@ -112,21 +112,13 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-### Notes
+### Starting and Stoping
 
-*Not yet known where these go in the install steps*
+#### EC2 instance
 
-Start gunicorn on a socket
+Gunicorn - worked with current config script
 
-```
-gunicorn --daemon djangoaws.wsgi -b unix:/home/ubuntu/djangoaws_project/djangoaws/djangoaws.sock
-```
-
-Collect static assets for serving by the Nginx location
-
-```
-./manage.py collectstatic --noinput
-```
+Nginx - started on server init automatically
 
 ## License
 
