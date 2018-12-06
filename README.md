@@ -1,4 +1,4 @@
-# djangoaws
+# django-aws-boilerplate
 
 Boilerplate project for running a Django app in AWS with:
 
