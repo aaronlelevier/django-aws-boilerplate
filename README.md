@@ -45,22 +45,45 @@ $ gunicorn djangoaws.wsgi
 
 Ubuntu 16.04 LTS - AWS EC2 quickstart image
 
+### Instance
+
+set Security Group
+
+- Inbound Rules - "My IP"
+
 ### Install steps
+
+Install Python and MySQL client required packages
 
 ```
 sudo apt-get update
 
-sudo apt-get install python3-pip
-
-sudo apt-get install python3-venv
-
-sudo apt-get install nginx
+sudo apt-get install python3-pip python3-venv nginx libmysqlclient-dev -y
 ```
 
-MySQL client required packages
+### Test Nginx is being served
+
+set Security Group
+
+- Inbound Rules - Port 80 "anywhere"
+
+ref: [www.nginx.com/blog/nginx-plus-on-amazon-ec2-getting-started/](https://www.nginx.com/blog/nginx-plus-on-amazon-ec2-getting-started/)
+
+
+### Configure project
+
+Load `.rds-config`, with one's own defaults:
 
 ```
-sudo apt-get install libmysqlclient-dev
+export RDS_NAME=
+export RDS_USERNAME=
+export RDS_PASSWORD==
+export RDS_HOST=
+export RDS_PORT=
+```
+
+```
+source .rds-config
 ```
 
 Clone repo, create virtualenv and install requirements
@@ -83,12 +106,13 @@ Log dir setup
 
 ```
 sudo mkdir /var/log/gunicorn
+sudo chown -R ubuntu:ubuntu -R /var/log/gunicorn/
 ```
 
 Installing and starting
 
 ```
-copy gunicorn.service file to /etc/systemd/system/gunicorn.service
+sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 # starting
 sudo systemctl start gunicorn
