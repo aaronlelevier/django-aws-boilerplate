@@ -19,6 +19,12 @@ Use a `virtualenv` and `pip install -r requirements.txt` in the project director
 
 ## Database
 
+### install mysql package
+
+```
+sudo apt install mysql-client-core-5.7
+```
+
 Local setup
 
 ```
@@ -72,14 +78,16 @@ ref: [www.nginx.com/blog/nginx-plus-on-amazon-ec2-getting-started/](https://www.
 
 ### Configure project
 
-Load `.rds-config`, with one's own defaults:
+Environment Variables have to be added for Gunicorn. Make a file called this and fill in with one's own values
+
+**# /home/ubuntu/djangoaws_project/.rds-config**
 
 ```
-export RDS_NAME=
-export RDS_USERNAME=
-export RDS_PASSWORD==
-export RDS_HOST=
-export RDS_PORT=
+RDS_NAME=
+RDS_USERNAME=
+RDS_PASSWORD==
+RDS_HOST=
+RDS_PORT=
 ```
 
 ```
@@ -89,7 +97,7 @@ source .rds-config
 Clone repo, create virtualenv and install requirements
 
 ```
-git clone https://github.com/aaronlelevier/djangoaws_project.git
+git clone https://github.com/aaronlelevier/django-aws-boilerplate.git djangoaws_project
 
 cd djangoaws_project
 

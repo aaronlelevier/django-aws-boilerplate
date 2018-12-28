@@ -6,7 +6,8 @@ After=network.target
 User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/djangoaws_project/djangoaws
-ExecStart=/home/ubuntu/djangoaws_project/venv/bin/gunicorn --error-logfile /var/log/gunicorn/error.log --access-logfile /var/log/gunicorn/access.log djangoaws.wsgi -b unix:/home/ubuntu/djangoaws_project/djangoaws/djangoaws.sock
+ExecStart=/home/ubuntu/djangoaws_project/venv/bin/gunicorn --error-logfile /var/log/gunicorn/error.log --access-logfile /var/log/gunicorn/access.log djangoaws.wsgi -b unix:/home/ubuntu/djangoaws_project/djangoaws/djangoaws.sock:application
+EnvironmentFile=/home/ubuntu/djangoaws_project/.rds-config
 
 [Install]
 WantedBy=multi-user.target
