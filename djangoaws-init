@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# /etc/init.d/djangoaws
+#
+# chkconfig: 345 95 05
+# description: djangoaws daemin
+#
+# processname: djangoaws
+
+PROJECT_DIR=/home/ubuntu/djangoaws_project
+
+start() {
+    echo "starting"
+    $PROJECT_DIR/venv/bin/python $PROJECT_DIR/djangoaws/manage.py migrate
+    $PROJECT_DIR/venv/bin/python $PROJECT_DIR/djangoaws/manage.py collectstatic --noinput
+    sudo systemctl restart gunicorn
+    sudo systemctl restart nginx
+}
+
+stop () {
+    echo "stopping"
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+esac
