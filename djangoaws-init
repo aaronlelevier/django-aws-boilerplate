@@ -1,11 +1,13 @@
 #!/bin/sh
 
-# /etc/init.d/djangoaws
-#
-# chkconfig: 345 95 05
-# description: djangoaws daemin
-#
-# processname: djangoaws
+### BEGIN INIT INFO
+# Provides:          djangoaws
+# Required-Start:    $all
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: combined starting and stop of a single djangoaws web node
+### END INIT INFO
 
 PROJECT_DIR=/home/ubuntu/djangoaws_project
 

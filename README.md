@@ -144,6 +144,18 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
+## Upstart
+
+Add web app `djangoaws-init` script to `upstart`. Looking here currently won't show the file symlinked yet `ls -la /etc/rc3.d/`
+
+```
+sudo cp /home/ubuntu/djangoaws_project/djangoaws-init /etc/init.d/djangoaws-init
+sudo update-rc.d djangoaws-init defaults
+sudo update-rc.d djangoaws-init enable
+```
+
+The file can now be see symlinked here: `ls -la /etc/rc3.d/`
+
 ### Starting and Stoping
 
 #### EC2 instance
