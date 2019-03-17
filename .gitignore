@@ -115,4 +115,4 @@ dmypy.json
 .pyre/
 .vscode/
 static/
-.rds-config
+.env-vars
